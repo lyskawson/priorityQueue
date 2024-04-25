@@ -15,8 +15,8 @@ This program is designed to simulate a simple receiver implemented with priority
 ## Compiling Project
 
 To compile the project, navigate to the project directory and use the following command:
-**g++ receiver.cpp -c**
-**g++ main.cpp receiver.o -o driver_zad3**
+* **g++ receiver.cpp -c**
+* **g++ main.cpp receiver.o -o driver_zad3**
 
 ## Usage
 
