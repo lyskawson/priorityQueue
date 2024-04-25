@@ -96,7 +96,7 @@ receiver receiver::receive_message(const std::string filename, int packet_size, 
     std::string word;
     int packetCount = 0;
     std::string packetContents = "";
-    int wordsRead = 0;
+    int wordsRead = 0; // number of words read
     int wordsInserted = 0; // number of words inserted in the current message
     int wordsSkipped = 0; // number of words skipped
 
@@ -112,7 +112,9 @@ receiver receiver::receive_message(const std::string filename, int packet_size, 
         if (wordsInserted >= message_size)
             break;
 
-        packetContents += word + " ";
+
+        packetContents = packetContents + word + " ";
+
         wordsRead++;
         wordsInserted++;
 
@@ -132,7 +134,6 @@ receiver receiver::receive_message(const std::string filename, int packet_size, 
         packetCount++;
         receivedPackets.insert(packetContents, packetCount);
     }
-
     file.close();
 
     return receivedPackets;
@@ -143,7 +144,7 @@ void receiver::display_received_message(receiver receivedPackets)
     std::string receivedMessage;
     for (int i = 1; receivedPackets.getSize(); i++)
     {
-        receivedMessage = receivedMessage + receivedPackets.removeMin() + " ";
+        receivedMessage = receivedMessage + receivedPackets.removeMin();
     }
     std::cout << std::endl;
     std::cout << "Received message: " << std::endl;
